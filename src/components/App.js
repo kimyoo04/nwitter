@@ -10,7 +10,9 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(authService, (user) => {
       if (user) {
-        setUserObj(user);
+        setUserObj(user); // 로그인 했을 때 리랜더링, 유저 데이터 활용 역할
+      } else {
+        setUserObj(null); // 로그아웃 했을 때 리랜더링 역할
       }
       setInit(true);
     });
@@ -32,7 +34,6 @@ function App() {
       ) : (
         "Initializing..."
       )}
-      <footer>&copy; {new Date().getFullYear()} Nwitter</footer>
     </>
   );
 }
